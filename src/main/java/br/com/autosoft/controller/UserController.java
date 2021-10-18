@@ -3,7 +3,11 @@ package br.com.autosoft.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.autosoft.dtos.UserDTO;
 import br.com.autosoft.entities.User;
+import br.com.autosoft.error.EntityNotFoundException;
 import br.com.autosoft.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -29,7 +34,7 @@ public class UserController {
 	private UserService userService;
 	
 	@PostMapping
-	public User create(@RequestBody User user){
+	public User create(@RequestBody @Valid User user){
 		return userService.create(user);
 	}
 	
@@ -40,13 +45,14 @@ public class UserController {
 		return ResponseEntity.ok(result);
 	}
 	
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDTO> readBydId(@PathVariable Integer id) {
-		Optional<UserDTO> result = userService.readById(id);
-		if(result.isPresent()) {
+		try {
+			Optional<UserDTO> result = userService.readById(id);
 			return new ResponseEntity<UserDTO>(result.get(), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} catch (EntityNotFoundException e) {
+			throw new EntityNotFoundException("User not found for id " + e.getMessage());
 		}
 	}
 	
@@ -54,21 +60,17 @@ public class UserController {
 	@PutMapping("/{id}")
 	public ResponseEntity<UserDTO> update(@PathVariable Integer id, @RequestBody User alterUser) {
 		Optional<UserDTO> result = userService.update(id, alterUser);
-		if(result.isPresent()) {
+		if(result.isPresent()) 
 			return new ResponseEntity<UserDTO>(result.get(), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		throw new EntityNotFoundException("User not found for id: " + id);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<UserDTO> delete(@PathVariable Integer id) {
 		Optional<UserDTO> result = userService.delete(id);
-		if(result.isPresent()) {
+		if(result.isPresent()) 
 			return new ResponseEntity<UserDTO>(result.get(), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		throw new EntityNotFoundException("User not found for id" + id);
 	}
 	
 }

@@ -26,12 +26,16 @@ public class UserService {
 	
 	public List<UserDTO> read() {
 		List<User> result = userRepository.findAll();
-		return result.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+		return result.stream()
+				.map(x -> new UserDTO(x))
+				.collect(Collectors.toList());
 	}
 	
 	public Optional<UserDTO> readById(@PathVariable Integer id) {
 		Optional<User> result = userRepository.findById(id);
-		return result.stream().map(x -> new UserDTO(x)).findFirst();
+		return result.stream()
+				.map(x -> new UserDTO(x))
+				.findFirst();
 	}
 	
 	public Optional<UserDTO> update(@PathVariable Integer id, @RequestBody User alterUser) {
@@ -41,13 +45,17 @@ public class UserService {
 		user.setNick(alterUser.getNick());
 		user.setEmail(alterUser.getEmail());
 		userRepository.save(alterUser);
-		return result.stream().map(x -> new UserDTO(x)).findFirst();
+		return result.stream()
+				.map(x -> new UserDTO(x))
+				.findFirst();
 	}
 	
 	public Optional<UserDTO> delete(@PathVariable Integer id) {
 		Optional<User> result = userRepository.findById(id);
 		userRepository.delete(result.get());
-		return result.stream().map(x -> new UserDTO(x)).findFirst();
+		return result.stream()
+				.map(x -> new UserDTO(x))
+				.findFirst();
 	}
 	
 

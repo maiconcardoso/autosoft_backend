@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_user")
@@ -14,8 +16,11 @@ public class User {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	
+	@NotEmpty(message = "The Nick Name User cannot be Empty")
 	private String nick;
 	private String email;
+	@NotNull
 	private String password;
 	
 	public User() {
