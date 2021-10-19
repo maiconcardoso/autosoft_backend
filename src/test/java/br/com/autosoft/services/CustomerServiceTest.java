@@ -1,10 +1,8 @@
 package br.com.autosoft.services;
 
-import static org.mockito.Mockito.clearInvocations;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -23,11 +21,6 @@ public class CustomerServiceTest {
     private static final Integer idCustomer2 = 2;
     CustomerDTO customer1 = new CustomerDTO(idCustomer1, "Maicon Cardoso", "44991682996", "07545268980", "maiconscardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
     CustomerDTO customer2 = new CustomerDTO(idCustomer2, "Maria Cardoso", "44978682996", "07545268980", "maris2cardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
-    
-    @AfterEach
-    public void tearDown() {
-        clearInvocations(service);
-    }
     
     @Test
     public void mustReturnCustomerList_whenSuccesfull() {

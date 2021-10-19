@@ -29,6 +29,7 @@ public class CustomerDTO {
 	private String cep;
 	
 	public CustomerDTO(Customer customer) {
+		this.id = customer.getId();
 		this.name = customer.getName();
 		this.fone = customer.getFone();
 		this.cpf = customer.getCpf();
