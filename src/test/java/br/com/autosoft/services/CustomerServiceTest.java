@@ -23,14 +23,7 @@ public class CustomerServiceTest {
     private static final Integer idCustomer2 = 2;
     Customer customer1 = new Customer(idCustomer1, "Maicon Cardoso", "44991682996", "07545268980", "maiconscardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
     Customer customer2 = new Customer(idCustomer2, "Maria Cardoso", "44978682996", "07545268980", "maris2cardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
-
-    public List<Customer> setUp() {
-        List<Customer> listCustomer = service.findAll();
-        listCustomer.add(customer1);
-        listCustomer.add(customer2);
-        return listCustomer;
-    }
-
+    
     @AfterEach
     public void tearDown() {
         clearInvocations(service);
@@ -38,7 +31,10 @@ public class CustomerServiceTest {
     
     @Test
     public void mustReturnCustomerList_whenSuccesfull() {
-        Assertions.assertTrue(setUp().contains(customer1));
-        Assertions.assertTrue(setUp().contains(customer2));
+        List<Customer> listCustomer = service.findAll();
+        listCustomer.add(customer1);
+        listCustomer.add(customer2);
+        Assertions.assertTrue(listCustomer.contains(customer1));
+        Assertions.assertTrue(listCustomer.contains(customer2));
     }
 }
