@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import br.com.autosoft.entities.Customer;
+import br.com.autosoft.dtos.CustomerDTO;
 import br.com.autosoft.service.CustomerService;
 
 @DataJpaTest
@@ -21,8 +21,8 @@ public class CustomerServiceTest {
     
     private static final Integer idCustomer1 = 1;
     private static final Integer idCustomer2 = 2;
-    Customer customer1 = new Customer(idCustomer1, "Maicon Cardoso", "44991682996", "07545268980", "maiconscardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
-    Customer customer2 = new Customer(idCustomer2, "Maria Cardoso", "44978682996", "07545268980", "maris2cardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
+    CustomerDTO customer1 = new CustomerDTO(idCustomer1, "Maicon Cardoso", "44991682996", "07545268980", "maiconscardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
+    CustomerDTO customer2 = new CustomerDTO(idCustomer2, "Maria Cardoso", "44978682996", "07545268980", "maris2cardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" );
     
     @AfterEach
     public void tearDown() {
@@ -31,7 +31,7 @@ public class CustomerServiceTest {
     
     @Test
     public void mustReturnCustomerList_whenSuccesfull() {
-        List<Customer> listCustomer = service.findAll();
+        List<CustomerDTO> listCustomer = service.read();
         listCustomer.add(customer1);
         listCustomer.add(customer2);
         Assertions.assertTrue(listCustomer.contains(customer1));

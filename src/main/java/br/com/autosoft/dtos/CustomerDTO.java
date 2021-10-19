@@ -2,12 +2,12 @@ package br.com.autosoft.dtos;
 
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import br.com.autosoft.entities.Customer;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class CustomerDTO {
