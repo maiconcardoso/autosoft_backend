@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.CustomerDTO;
@@ -26,7 +27,12 @@ public class CustomerService {
     public CustomerDTO readById(Integer id) {
         Optional<Customer> idCustomer = repository.findById(id);
         return idCustomer.stream().map(obj -> new CustomerDTO(obj)).findFirst()
-                .orElseThrow(() -> new EntityNotFoundException("Entity Not Found for id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
+    }
+
+    public List<CustomerDTO> readByNameCustomer(String name) {
+        List<Customer> customer = repository.findByName(name);
+            return customer.stream().map(obj -> new CustomerDTO(obj)).collect(Collectors.toList());
     }
 
     public Customer save(Customer customerToBeSaved) {

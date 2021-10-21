@@ -1,7 +1,6 @@
 package br.com.autosoft.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
