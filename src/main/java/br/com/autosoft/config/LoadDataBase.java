@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.autosoft.entities.Customer;
-import br.com.autosoft.repository.CustomerRepository;
+import br.com.autosoft.repositories.CustomerRepository;
 
 @Configuration
 public class LoadDataBase {
