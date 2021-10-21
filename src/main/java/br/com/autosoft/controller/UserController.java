@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.autosoft.dtos.UserDTO;
 import br.com.autosoft.entities.User;
-import br.com.autosoft.error.EntityNotFoundException;
+import br.com.autosoft.errors.EntityNotFoundException;
 import br.com.autosoft.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200")

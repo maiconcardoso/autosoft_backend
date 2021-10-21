@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.autosoft.dtos.UserDTO;
 import br.com.autosoft.entities.User;
-import br.com.autosoft.repository.UserRepository;
+import br.com.autosoft.repositories.UserRepository;
 
 @Service
 public class UserService {
