@@ -1,9 +1,6 @@
 package br.com.autosoft.controller;
 
 import java.util.List;
-import java.util.Optional;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,8 +38,8 @@ public class CustomerController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<List<CustomerDTO>> findByNameCustomer(@RequestParam String name) {
-        List<CustomerDTO> customerNameFound = service.readByNameCustomer(name);
+    public ResponseEntity<List<CustomerDTO>> findByName(@RequestParam String name) {
+        List<CustomerDTO> customerNameFound = service.readByName(name);
         if(customerNameFound.isEmpty()) 
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(customerNameFound);
         return ResponseEntity.status(HttpStatus.OK).body(customerNameFound); 
@@ -51,5 +49,11 @@ public class CustomerController {
     public ResponseEntity<Customer> save(@RequestBody Customer customerToBeSaved) {
         Customer customerSave = service.save(customerToBeSaved);
         return ResponseEntity.status(HttpStatus.OK).body(customerSave);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CustomerDTO> update(@RequestBody Customer customerToBeUpdated, @PathVariable Integer id) {
+        CustomerDTO customerUpdate = service.update(customerToBeUpdated, id);
+        return ResponseEntity.status(HttpStatus.OK).body(customerUpdate);
     }
 }

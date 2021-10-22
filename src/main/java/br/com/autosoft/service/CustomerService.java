@@ -5,12 +5,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.CustomerDTO;
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.errors.EntityNotFoundException;
+import br.com.autosoft.errors.NoSuchElementException;
 import br.com.autosoft.repositories.CustomerRepository;
 
 @Service
@@ -30,14 +30,32 @@ public class CustomerService {
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
     }
 
-    public List<CustomerDTO> readByNameCustomer(String name) {
+    public List<CustomerDTO> readByName(String name) {
         List<Customer> customer = repository.findByName(name);
-            return customer.stream().map(obj -> new CustomerDTO(obj)).collect(Collectors.toList());
+        return customer.stream().map(obj -> new CustomerDTO(obj)).collect(Collectors.toList());
     }
 
     public Customer save(Customer customerToBeSaved) {
         customerToBeSaved.setId(null);
         return repository.save(customerToBeSaved);
+    }
+
+    public CustomerDTO update(Customer customerToBeUpdated, Integer id) {
+        Optional<Customer> idCustomer = repository.findById(id);
+        if (idCustomer.isPresent()) {
+            Customer customer = idCustomer.get();
+            customer.setName(customerToBeUpdated.getName());
+            customer.setFone(customerToBeUpdated.getFone());
+            customer.setEmail(customerToBeUpdated.getEmail());
+            customer.setCpf(customerToBeUpdated.getCpf());
+            customer.setCity(customerToBeUpdated.getCity());
+            customer.setCep(customerToBeUpdated.getCep());
+            customer.setAddress(customerToBeUpdated.getAddress());
+            repository.save(customer);
+        }
+        return idCustomer.stream().map(obj -> new CustomerDTO(obj)).findFirst()
+            .orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
+        
     }
 
 }

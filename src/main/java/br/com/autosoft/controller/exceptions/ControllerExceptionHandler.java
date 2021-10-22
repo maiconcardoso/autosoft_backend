@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import br.com.autosoft.errors.EntityNotFoundException;
+import br.com.autosoft.errors.NoSuchElementException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -23,5 +24,16 @@ public class ControllerExceptionHandler {
         err.setMessage(entityNotFound.getMessage());
         err.setPath(request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<StandardError> noSuchElement(NoSuchElementException noSuchElement, HttpServletRequest request) {
+        StandardError err = new StandardError();
+        err.setTimestamp(Instant.now());
+        err.setStatus(HttpStatus.BAD_REQUEST.value());
+        err.setError("No Such Element");
+        err.setMessage(noSuchElement.getMessage());
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
     }
 }
