@@ -55,7 +55,11 @@ public class CustomerService {
         }
         return idCustomer.stream().map(obj -> new CustomerDTO(obj)).findFirst()
             .orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
-        
+    }
+
+    public void delete(Integer id) {
+        Customer customerToBeDeleted = repository.findById(id).get();
+        repository.delete(customerToBeDeleted);
     }
 
 }

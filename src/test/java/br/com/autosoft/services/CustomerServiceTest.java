@@ -13,10 +13,8 @@ import br.com.autosoft.dtos.CustomerDTO;
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.repositories.CustomerRepository;
 import br.com.autosoft.service.CustomerService;
-import lombok.extern.log4j.Log4j2;
 
 @DataJpaTest
-@Log4j2
 public class CustomerServiceTest {
 
     @MockBean
@@ -65,8 +63,20 @@ public class CustomerServiceTest {
         Assertions.assertEquals(customerSaved.getId(), customerFirst.getId());
     }
 
+    @Test
+    @DisplayName("Delete customer")
+    public void mustDeleteCustomer_whenSuccesfull() {
+        Customer customer = createCustomer();
+        Customer customerToBeSaved = repository.save(customer);
+        Customer customerId = repository.findById(customerToBeSaved.getId()).get();
+        repository.delete(customerId);
+        Assertions.assertNotNull(customerId);
+    }
+
     public Customer createCustomer() {
         return Customer.builder().id(3).name("Cliente").fone("991682996").email("cliente@email.com").cpf("870754885")
                 .city("Cidade").cep("87075325").address("Rua do cliente").build();
     }
+
+
 }
