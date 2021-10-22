@@ -5,21 +5,19 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import br.com.autosoft.dtos.CustomerDTO;
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.repositories.CustomerRepository;
 import br.com.autosoft.service.CustomerService;
-import lombok.extern.log4j.Log4j2;
 
 @DataJpaTest
-@Log4j2
 public class CustomerServiceTest {
 
-    @MockBean
+    @Mock
     private CustomerService service;
 
     @Autowired
@@ -69,9 +67,9 @@ public class CustomerServiceTest {
     @DisplayName("Delete customer")
     public void mustDeleteCustomer_whenSuccesfull() {
         Customer customer = createCustomer();
-        Customer customerToBeSaved = repository.save(customer);
-        Customer customerId = repository.findById(customerToBeSaved.getId()).get();
-        repository.delete(customerId);
+        Customer customerToBeSaved = this.repository.save(customer);
+        Customer customerId = this.repository.findById(customerToBeSaved.getId()).get();
+        this.repository.delete(customerId);
         Assertions.assertNotNull(customerId);
     }
 

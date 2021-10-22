@@ -41,9 +41,9 @@ public class CustomerService {
     }
 
     public CustomerDTO update(Customer customerToBeUpdated, Integer id) {
-        Optional<Customer> idCustomer = repository.findById(id);
-        if (idCustomer.isPresent()) {
-            Customer customer = idCustomer.get();
+        Optional<Customer> customerById = repository.findById(id);
+        if (customerById.isPresent()) {
+            Customer customer = customerById.get();
             customer.setName(customerToBeUpdated.getName());
             customer.setFone(customerToBeUpdated.getFone());
             customer.setEmail(customerToBeUpdated.getEmail());
@@ -53,7 +53,7 @@ public class CustomerService {
             customer.setAddress(customerToBeUpdated.getAddress());
             repository.save(customer);
         }
-        return idCustomer.stream().map(obj -> new CustomerDTO(obj)).findFirst()
+        return customerById.stream().map(obj -> new CustomerDTO(obj)).findFirst()
             .orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
     }
 
