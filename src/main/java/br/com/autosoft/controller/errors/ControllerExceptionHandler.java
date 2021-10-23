@@ -1,4 +1,4 @@
-package br.com.autosoft.controller.exceptions;
+package br.com.autosoft.controller.errors;
 
 import java.time.Instant;
 
@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import br.com.autosoft.errors.EntityNotFoundException;
-import br.com.autosoft.errors.NoSuchElementException;
-import br.com.autosoft.errors.RegisteredEntityException;
+import br.com.autosoft.exceptions.EntityNotFoundException;
+import br.com.autosoft.exceptions.NoSuchElementException;
+import br.com.autosoft.exceptions.RegisteredEntityException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {

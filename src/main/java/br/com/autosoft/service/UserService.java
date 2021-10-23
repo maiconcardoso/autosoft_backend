@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.UserDTO;
 import br.com.autosoft.entities.User;
-import br.com.autosoft.errors.EntityNotFoundException;
-import br.com.autosoft.errors.NoSuchElementException;
-import br.com.autosoft.errors.RegisteredEntityException;
+import br.com.autosoft.exceptions.EntityNotFoundException;
+import br.com.autosoft.exceptions.NoSuchElementException;
+import br.com.autosoft.exceptions.RegisteredEntityException;
 import br.com.autosoft.repositories.UserRepository;
 
 @Service
