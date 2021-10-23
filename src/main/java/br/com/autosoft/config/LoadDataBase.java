@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.repositories.CustomerRepository;
+import br.com.autosoft.repositories.OrderRepository;
 
 @Configuration
 public class LoadDataBase {
@@ -18,14 +19,17 @@ public class LoadDataBase {
     @Autowired
     CustomerRepository clientRepository;
 
+    @Autowired
+    OrderRepository orderRepository;
+
     @Bean
     public CommandLineRunner initDatabase() {
         return args -> {
             log.info(
-                "Preloading " + clientRepository.save(new Customer(null, "Maicon Cardoso", "44991682996", "07545268980", "maiconscardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" ))
+                "Preloading " + clientRepository.save(new Customer(null, "Carlos Alberto", "44991682996", "07545268980", "maiconscardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" ))
             );
             log.info(
-                "Preloading " + clientRepository.save(new Customer(null, "Maria Cardoso", "44978682996", "07545268980", "maris2cardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" ))
+                "Preloading " + clientRepository.save(new Customer(null, "Ana Maria de Nobrega", "44978682996", "07545268980", "maris2cardoso@hotmail.com", "Paranavaí", "Rua João", "87706443" ))
             );
         };
     }

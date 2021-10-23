@@ -1,4 +1,4 @@
-package br.com.autosoft.controller.exceptions;
+package br.com.autosoft.controller.errors;
 
 import java.io.Serializable;
 import java.time.Instant;
