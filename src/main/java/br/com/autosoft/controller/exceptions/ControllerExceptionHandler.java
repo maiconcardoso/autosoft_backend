@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import br.com.autosoft.errors.EntityNotFoundException;
 import br.com.autosoft.errors.NoSuchElementException;
+import br.com.autosoft.errors.RegisteredEntityException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -35,5 +36,16 @@ public class ControllerExceptionHandler {
         err.setMessage(noSuchElement.getMessage());
         err.setPath(request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+    }
+
+    @ExceptionHandler(RegisteredEntityException.class)
+    public ResponseEntity<StandardError> registeredEntity(RegisteredEntityException registeredEntity, HttpServletRequest request) {
+        StandardError err = new StandardError();
+        err.setTimestamp(Instant.now());
+        err.setStatus(HttpStatus.CONFLICT.value());
+        err.setError("Entity Registered");
+        err.setMessage(registeredEntity.getMessage());
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(err);
     }
 }

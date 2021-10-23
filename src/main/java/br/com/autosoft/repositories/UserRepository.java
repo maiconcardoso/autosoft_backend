@@ -6,5 +6,5 @@ import br.com.autosoft.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-
+    User findByEmail(String email);
 }

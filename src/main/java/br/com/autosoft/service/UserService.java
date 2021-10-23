@@ -4,59 +4,60 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.autosoft.dtos.UserDTO;
 import br.com.autosoft.entities.User;
+import br.com.autosoft.errors.EntityNotFoundException;
+import br.com.autosoft.errors.NoSuchElementException;
+import br.com.autosoft.errors.RegisteredEntityException;
 import br.com.autosoft.repositories.UserRepository;
 
 @Service
 public class UserService {
-	
+
 	@Autowired
-	private UserRepository userRepository;
-	
-	public User create(@RequestBody User user) {
-		return userRepository.save(user);
+	private UserRepository repository;
+
+	public User create(User userForCreate){
+		User newUser = repository.findByEmail(userForCreate.getEmail());
+		if (newUser == null) {
+			return repository.save(userForCreate);
+		}
+		throw new RegisteredEntityException(RegisteredEntityException.MESSAGE);
 	}
-	
+
 	public List<UserDTO> read() {
-		List<User> result = userRepository.findAll();
-		return result.stream()
-				.map(x -> new UserDTO(x))
-				.collect(Collectors.toList());
+		List<User> user = repository.findAll();
+		return user.stream().map(obj -> new UserDTO(obj)).collect(Collectors.toList());
 	}
-	
-	public Optional<UserDTO> readById(@PathVariable Integer id) {
-		Optional<User> result = userRepository.findById(id);
-		return result.stream()
-				.map(x -> new UserDTO(x))
-				.findFirst();
+
+	public UserDTO readById(Integer id) {
+		Optional<User> userById = repository.findById(id);
+		return userById.stream().map(obj -> new UserDTO(obj)).findFirst()
+				.orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
 	}
-	
-	public Optional<UserDTO> update(@PathVariable Integer id, @RequestBody User alterUser) {
-		Optional<User> result = userRepository.findById(id);
-	    User user = result.get();
-		user.setName(alterUser.getName());
-		user.setNick(alterUser.getNick());
-		user.setEmail(alterUser.getEmail());
-		userRepository.save(alterUser);
-		return result.stream()
-				.map(x -> new UserDTO(x))
-				.findFirst();
+
+	public UserDTO update(Integer id, User alterUser) {
+		Optional<User> userForUpdate = repository.findById(id);
+		if (userForUpdate.isPresent()) {
+			User user = userForUpdate.get();
+			user.setName(alterUser.getName());
+			user.setNick(alterUser.getNick());
+			user.setEmail(alterUser.getEmail());
+			repository.save(alterUser);
+		}
+		return userForUpdate.stream().map(obj -> new UserDTO(obj)).findFirst()
+				.orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
 	}
-	
-	public Optional<UserDTO> delete(@PathVariable Integer id) {
-		Optional<User> result = userRepository.findById(id);
-		userRepository.delete(result.get());
-		return result.stream()
-				.map(x -> new UserDTO(x))
-				.findFirst();
+
+	public UserDTO delete(Integer id) {
+		Optional<User> userForDelete = repository.findById(id);
+		if (userForDelete.isPresent())
+			repository.delete(userForDelete.get());
+		return userForDelete.stream().map(obj -> new UserDTO(obj)).findFirst()
+				.orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
 	}
-	
 
 }
