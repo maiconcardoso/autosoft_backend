@@ -1,7 +1,6 @@
 package br.com.autosoft.dtos;
 
 import java.util.Calendar;
-import java.util.List;
 
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.entities.Order;
