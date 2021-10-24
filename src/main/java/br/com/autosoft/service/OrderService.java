@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.com.autosoft.dtos.OrderDTO;
 import br.com.autosoft.entities.Order;
 import br.com.autosoft.exceptions.EntityNotFoundException;
+import br.com.autosoft.exceptions.NoSuchElementException;
 import br.com.autosoft.repositories.OrderRepository;
 
 @Service
@@ -31,6 +32,19 @@ public class OrderService {
 
     public Order save(Order order) {
         return repository.save(order);
+    }
+
+    public OrderDTO update(Order order, Integer id) {
+        Optional<Order> orderById = repository.findById(id);
+        if (orderById.isPresent()) {
+            Order orderForUpdate = orderById.get();
+            orderForUpdate.setStatus(order.getStatus());
+            orderForUpdate.setCreationDate(order.getCreationDate());
+            orderForUpdate.setCustomer(order.getCustomer());
+            repository.save(order);
+        }
+        return orderById.stream().map(obj -> new OrderDTO(obj)).findFirst()
+                .orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
     }
 
 }
