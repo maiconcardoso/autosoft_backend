@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.CustomerDTO;
@@ -18,6 +20,10 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepository repository;
+
+    public Page<Customer> readPageable(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
 
     public List<CustomerDTO> readAll() {
         List<Customer> registeredCustomer = repository.findAll();
