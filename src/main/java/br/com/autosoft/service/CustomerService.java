@@ -19,7 +19,7 @@ public class CustomerService {
     @Autowired
     private CustomerRepository repository;
 
-    public List<CustomerDTO> read() {
+    public List<CustomerDTO> readAll() {
         List<Customer> registeredCustomer = repository.findAll();
         return registeredCustomer.stream().map(obj -> new CustomerDTO(obj)).collect(Collectors.toList());
     }

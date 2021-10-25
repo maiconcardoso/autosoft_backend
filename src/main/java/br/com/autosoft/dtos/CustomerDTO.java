@@ -4,12 +4,14 @@ import javax.validation.constraints.NotEmpty;
 
 import br.com.autosoft.entities.Customer;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class CustomerDTO {
 	
 	private Integer id;

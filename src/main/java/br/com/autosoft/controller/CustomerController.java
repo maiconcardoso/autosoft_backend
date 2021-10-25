@@ -28,7 +28,7 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> findAll() {
-        List<CustomerDTO> registeredCustomer = service.read();
+        List<CustomerDTO> registeredCustomer = service.readAll();
         return ResponseEntity.status(HttpStatus.OK).body(registeredCustomer);
     }
 
