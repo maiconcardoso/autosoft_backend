@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import br.com.autosoft.dtos.CustomerDTO;
 import br.com.autosoft.entities.Customer;
@@ -21,6 +24,9 @@ public class CustomerServiceTest {
 
     Customer customerToBeSaved;
     Customer customerSave;
+    
+    @Mock
+    Pageable pageable;
 
     @BeforeEach
     public void start(){
@@ -59,6 +65,7 @@ public class CustomerServiceTest {
         Assertions.assertEquals(customerSave.getName(), "Cliente");
     }
 
+    
     @Test
     @DisplayName("Must Delete customer when succesfull")
     public void mustDeleteCustomer_whenSuccesfull() {
@@ -66,6 +73,13 @@ public class CustomerServiceTest {
         Integer id = customerById.getId();
         service.delete(id);
         Assertions.assertNotNull(id);
+    }
+
+    @Test
+    @DisplayName("Must return customer pageable when succesfull")
+    public void mustReturnPageableCustomer_whenSuccesfull() {
+        Page<Customer> customerPage = service.readPageable(pageable);
+        Assertions.assertFalse(customerPage.isEmpty());
     }
 
     public Customer createCustomer() {
