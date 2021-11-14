@@ -49,10 +49,11 @@ public class OrderService {
 
     public OrderDTO delete(Integer id) {
         Optional<Order> orderById = repository.findById(id);
-        if (orderById.isPresent()) 
-            repository.delete(orderById.get());
-        return orderById.stream()
-            .map((obj) -> new OrderDTO(obj)).findFirst().orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
+        if (orderById.isPresent())
+            repository.deleteById(id);
+        return null;
+        // return orderById.stream().map((obj) -> new OrderDTO(obj)).findFirst()
+        //         .orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
     }
 
 }

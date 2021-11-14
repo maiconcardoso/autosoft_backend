@@ -64,8 +64,7 @@ public class CustomerService {
     }
 
     public void delete(Integer id) {
-        Customer customerToBeDeleted = repository.findById(id).get();
-        repository.delete(customerToBeDeleted);
+        repository.deleteById(id);
     }
 
 }
