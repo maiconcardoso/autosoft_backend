@@ -29,7 +29,7 @@ public class CustomerServiceTest {
     Pageable pageable;
 
     @BeforeEach
-    public void start(){
+    public void setup(){
         customerToBeSaved = createCustomer();
         customerSave = service.save(customerToBeSaved);
     }

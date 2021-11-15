@@ -57,7 +57,7 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<Customer> save(@RequestBody Customer customerToBeSaved) {
         Customer customerSave = service.save(customerToBeSaved);
-        return ResponseEntity.status(HttpStatus.OK).body(customerSave);
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerSave);
     }
 
     @PutMapping("/{id}")
