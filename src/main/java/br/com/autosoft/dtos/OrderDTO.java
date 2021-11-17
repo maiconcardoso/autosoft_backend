@@ -2,6 +2,8 @@ package br.com.autosoft.dtos;
 
 import java.util.Calendar;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.entities.Order;
 import br.com.autosoft.entities.OrderStatus;
@@ -15,6 +17,7 @@ import lombok.NoArgsConstructor;
 public class OrderDTO {
 
     private Integer id;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Calendar creationDate;
     private OrderStatus status;
     private Customer customer;   
