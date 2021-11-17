@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,7 +39,7 @@ public class Order implements Serializable{
     @JoinColumn(name = "id_customer")
     private Customer customer;   
     
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> items = new ArrayList<>();
     private Double amount;
 
@@ -47,5 +48,4 @@ public class Order implements Serializable{
         for (OrderItem item : items) { amount += item.getSubTotal(); }
         return amount;
     }
-
 }

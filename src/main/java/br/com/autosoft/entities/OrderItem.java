@@ -27,17 +27,11 @@ public class OrderItem {
     private Integer quantity;
     private Double price;
 
-    public OrderItem(Integer id, Integer quantity, Double price, Product product) {
-        this.id = id;
-        this.quantity = quantity;
-        this.price = price;
-        this.product = product;
-    }
-
+    
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
+    
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -45,5 +39,12 @@ public class OrderItem {
     
     public double getSubTotal() {
         return quantity * price;
+    }
+    
+    public OrderItem(Integer id, Integer quantity, Double price, Product product) {
+        this.id = id;
+        this.quantity = quantity;
+        this.price = price;
+        this.product = product;
     }
 }

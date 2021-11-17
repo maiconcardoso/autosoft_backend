@@ -28,6 +28,6 @@ public class OrderDTO {
         this.creationDate = order.getCreationDate();
         this.status = order.getStatus();
         this.customer = order.getCustomer();
-        this.amount = order.getAmount();
+        this.amount = order.getTotal();
     }
 }

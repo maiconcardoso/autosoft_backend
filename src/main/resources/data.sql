@@ -12,7 +12,18 @@ INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Mar
 INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Heitor Cardoso', null, '44654654654', 'heitorcardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
 INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Helena Cardoso', null, '65465465465', 'helenacardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
 
+
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T14:18:23Z', 0, 1, 7657.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T13:25:12Z', 1, 2, 5457.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-08-10T08:14:54Z', 3, 3, 77.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T15:33:59Z', 2, 4, 857.0);
+
+INSERT INTO tb_product (name, price) VALUES ('Bronzina', 25.60);
+INSERT INTO tb_product (name, price) VALUES ('Mancal', 38.50);
+INSERT INTO tb_product (name, price) VALUES ('Arruela de Encosto', 26.30);
+INSERT INTO tb_product (name, price) VALUES ('Bucha de Biela', 25.20);
+
+INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (1, 50.5, 1, 1);
+INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (1, 36.20, 3, 2);
+INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (2, 158.35, 2, 1);
+INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (2, 167.30, 4, 3);
