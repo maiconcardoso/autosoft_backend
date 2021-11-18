@@ -18,10 +18,10 @@ INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-1
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-08-10T08:14:54Z', 3, 3, 77.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T15:33:59Z', 2, 4, 857.0);
 
-INSERT INTO tb_product (name, price) VALUES ('Bronzina', 25.60);
-INSERT INTO tb_product (name, price) VALUES ('Mancal', 38.50);
-INSERT INTO tb_product (name, price) VALUES ('Arruela de Encosto', 26.30);
-INSERT INTO tb_product (name, price) VALUES ('Bucha de Biela', 25.20);
+INSERT INTO tb_product (name, provider_id, factory_code, group_name, price, brand) VALUES ('Bronzina', null, 4566998, 'Motor A.P', 25.60, 'MAHLE');
+INSERT INTO tb_product (name, provider_id, factory_code, group_name, price, brand) VALUES ('Mancal', null, 636995, 'Motor GM', 25.60, 'MAHLE');
+INSERT INTO tb_product (name, provider_id, factory_code, group_name, price, brand) VALUES ('Arruela de Encosto', null, 122545, 'Motor FORD', 25.60, 'TAKAO');
+INSERT INTO tb_product (name, provider_id, factory_code, group_name, price, brand) VALUES ('Bucha de Biela', null, 998874, 'Motor HONDA', 25.60, 'TAKAO');
 
 INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (1, 50.5, 1, 1);
 INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (1, 36.20, 3, 2);
