@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.entities.Order;
-import br.com.autosoft.entities.OrderStatus;
+import br.com.autosoft.enuns.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

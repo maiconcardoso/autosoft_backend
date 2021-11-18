@@ -1,4 +1,4 @@
-package br.com.autosoft.entities;
+package br.com.autosoft.enuns;
 
 public enum OrderStatus {
     

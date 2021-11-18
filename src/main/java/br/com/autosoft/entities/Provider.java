@@ -22,6 +22,7 @@ public class Provider {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    
     @Column(name = "phone_number")
     private Integer phoneNumber;
     private Integer cnpj;
