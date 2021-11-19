@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,19 +17,20 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "tb_provider")
+@Builder
 public class Provider {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    
+
     @Column(name = "phone_number")
-    private Integer phoneNumber;
-    private Integer cnpj;
+    private String phoneNumber;
+    private String cnpj;
     private String email;
     private String city;
     private String address;
-    private Integer cep;
+    private String cep;
 
 }

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.CustomerDTO;
+import br.com.autosoft.dtos.ProviderDTO;
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.exceptions.EntityNotFoundException;
 import br.com.autosoft.exceptions.NoSuchElementException;

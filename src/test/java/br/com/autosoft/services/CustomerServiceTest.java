@@ -44,7 +44,8 @@ public class CustomerServiceTest {
     @Test
     @DisplayName("Find by id Customer when succesfull")
     public void mustSavedAndReturnIdCustomer_whenSuccesfull() {
-        CustomerDTO customerById = service.readById(customerSave.getId());
+        Integer id = customerSave.getId();
+        CustomerDTO customerById = service.readById(id);
         Assertions.assertEquals(customerSave.getId(), customerById.getId());
     }
 

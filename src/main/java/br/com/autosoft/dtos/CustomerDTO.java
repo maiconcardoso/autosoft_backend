@@ -15,19 +15,16 @@ import lombok.NoArgsConstructor;
 public class CustomerDTO {
 	
 	private Integer id;
+
 	@NotEmpty(message = "The name Customer cannot be empty")
 	private String name;
+	
 	@NotEmpty(message = "The Fone Customer cannot be empty")
 	private String fone;
-	@NotEmpty(message = "The Cpf Customer cannot be empty")
 	private String cpf;
-	@NotEmpty(message = "The Email Customer cannot be empty")
 	private String email;
-	@NotEmpty(message = "The City Customer cannot be empty")
 	private String city;
-	@NotEmpty(message = "The Address Customer cannot be empty")
 	private String address;
-	@NotEmpty(message = "The Cep Customer canoot be empyt")
 	private String cep;
 	
 	public CustomerDTO(Customer customer) {
