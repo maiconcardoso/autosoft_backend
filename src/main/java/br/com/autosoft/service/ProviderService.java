@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.ProviderDTO;
@@ -20,6 +22,10 @@ public class ProviderService {
 
     public Provider create(Provider provider) {
         return repository.save(provider);
+    }
+
+    public Page<Provider> readAllPageable(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public List<ProviderDTO> readAll() {
@@ -53,5 +59,10 @@ public class ProviderService {
         }
         return providerById.stream().map((obj) -> new ProviderDTO(obj)).findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
+    }
+
+    public void deleteById(Integer id) {
+        ProviderDTO providerById = readById(id);
+        repository.deleteById(providerById.getId());
     }
 }

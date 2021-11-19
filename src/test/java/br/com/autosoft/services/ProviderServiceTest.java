@@ -5,8 +5,11 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import br.com.autosoft.dtos.ProviderDTO;
 import br.com.autosoft.entities.Provider;
@@ -21,6 +24,9 @@ public class ProviderServiceTest {
     private ProviderService service;
     private Provider providerToBeSaved;
     private Provider providerSaved;
+
+    @Mock
+    private Pageable page;
 
     @BeforeEach
     public void setUp() {
@@ -62,6 +68,20 @@ public class ProviderServiceTest {
         ProviderDTO providerForUpdated = service.update(id, providerSaved);
         Assertions.assertNotEquals(providerForUpdated.getName(), createProvider().getName());
         Assertions.assertEquals(providerForUpdated.getName(), "Fornecedor 2");
+    }
+
+    @Test
+    public void mustDeleteProviderById_whenSuccesfull() {
+        Integer id = providerSaved.getId();
+        service.deleteById(id);
+        Assertions.assertNotNull(providerSaved);
+    }
+
+    @Test
+    public void mustReturnPageableProvider_whenSuccesfull() {
+        Page<Provider> providerPage = service.readAllPageable(page);
+        Assertions.assertFalse(providerPage.isEmpty());
+
     }
 
     public Provider createProvider() {
