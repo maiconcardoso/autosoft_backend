@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import br.com.autosoft.dtos.ProviderDTO;
 import br.com.autosoft.entities.Provider;
 import br.com.autosoft.exceptions.EntityNotFoundException;
+import br.com.autosoft.exceptions.NoSuchElementException;
 import br.com.autosoft.repositories.ProviderRepository;
 
 @Service
@@ -58,7 +59,7 @@ public class ProviderService {
             repository.save(provider);
         }
         return providerById.stream().map((obj) -> new ProviderDTO(obj)).findFirst()
-                .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
+                .orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
     }
 
     public void deleteById(Integer id) {

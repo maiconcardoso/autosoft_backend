@@ -71,13 +71,6 @@ public class ProviderServiceTest {
     }
 
     @Test
-    public void mustDeleteProviderById_whenSuccesfull() {
-        Integer id = providerSaved.getId();
-        service.deleteById(id);
-        Assertions.assertNotNull(providerSaved);
-    }
-
-    @Test
     public void mustReturnPageableProvider_whenSuccesfull() {
         Page<Provider> providerPage = service.readAllPageable(page);
         Assertions.assertFalse(providerPage.isEmpty());
