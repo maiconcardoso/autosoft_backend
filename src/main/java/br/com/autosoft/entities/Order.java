@@ -41,11 +41,19 @@ public class Order implements Serializable{
     
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> items = new ArrayList<>();
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderLabor> labors = new ArrayList<>();
+
     private Double amount;
 
     public double getTotal() {
+        double totalItems = 0.0;
+        double totalLabors = 0.0;
         amount = 0.0;
-        for (OrderItem item : items) { amount += item.getSubTotal(); }
+        for (OrderItem item : items) { totalItems += item.getSubTotal(); }
+        for (OrderLabor labor : labors ) { totalLabors += labor.getTotalLabor(); }
+        amount = totalItems + totalLabors;
         return amount;
     }
 }
