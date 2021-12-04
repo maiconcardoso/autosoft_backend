@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +23,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "tb_product")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Product {
 
     @Id
@@ -30,6 +34,7 @@ public class Product {
     @Column(name = "factory_code")
     private String factoryCode;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "provider_id")
     private Provider provider;

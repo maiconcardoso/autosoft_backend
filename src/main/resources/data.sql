@@ -26,12 +26,13 @@ INSERT INTO tb_labor (description, price, group_name) VALUES ('Retifica de Virab
 INSERT INTO tb_labor (description, price, group_name) VALUES ('Retifica de Bloco', 60.0, 'Motor Ford');
 INSERT INTO tb_labor (description, price, group_name) VALUES ('Troca de Guia', 12.8, 'Motor Hunday');
 
-INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (1, 50.5, 1, 1);
-INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (1, 36.20, 3, 2);
-INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (2, 158.35, 2, 1);
-INSERT INTO tb_order_item(quantity, price, product_id, order_id) VALUES (2, 167.30, 4, 3);
 
-INSERT INTO tb_order_labor(quantity, price, labor_id, order_id) VALUES (1, 50.5, 1, 1);
-INSERT INTO tb_order_labor(quantity, price, labor_id, order_id) VALUES (1, 36.20, 3, 2);
-INSERT INTO tb_order_labor(quantity, price, labor_id, order_id) VALUES (2, 158.35, 2, 1);
-INSERT INTO tb_order_labor(quantity, price, labor_id, order_id) VALUES (2, 167.30, 4, 3);
+INSERT INTO tb_order_item(quantity, sub_total, product_id, order_id) VALUES (1, 0.0, 1, 1);
+INSERT INTO tb_order_item(quantity, sub_total, product_id, order_id) VALUES (1, 0.0, 2, 2);
+INSERT INTO tb_order_item(quantity, sub_total, product_id, order_id) VALUES (2, 0.0, 3, 1);
+INSERT INTO tb_order_item(quantity, sub_total, product_id, order_id) VALUES (2, 0.0, 4, 3);
+
+INSERT INTO tb_order_labor(quantity, sub_total, order_id, labor_id) VALUES (1, 0.0, 1, 1);
+INSERT INTO tb_order_labor(quantity, sub_total, order_id, labor_id) VALUES (1, 0.0, 2, 1);
+INSERT INTO tb_order_labor(quantity, sub_total, order_id, labor_id) VALUES (2, 0.0, 1, 2);
+INSERT INTO tb_order_labor(quantity, sub_total, order_id, labor_id) VALUES (2, 0.0, 3, 3);

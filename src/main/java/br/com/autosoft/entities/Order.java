@@ -1,13 +1,13 @@
 package br.com.autosoft.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.autosoft.enuns.OrderStatus;
 import lombok.AllArgsConstructor;
@@ -26,6 +28,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "tb_order")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Order implements Serializable{
     
     @Id
@@ -39,11 +42,11 @@ public class Order implements Serializable{
     @JoinColumn(name = "id_customer")
     private Customer customer;   
     
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> items = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    private List<OrderItem> items;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderLabor> labors = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
+    private List<OrderLabor> labors;
 
     private Double amount;
 
@@ -51,8 +54,8 @@ public class Order implements Serializable{
         double totalItems = 0.0;
         double totalLabors = 0.0;
         amount = 0.0;
-        for (OrderItem item : items) { totalItems += item.getSubTotal(); }
-        for (OrderLabor labor : labors ) { totalLabors += labor.getTotalLabor(); }
+        for (OrderItem item : items) {  totalItems += item.getSubTotal(); }
+        for (OrderLabor labor : labors ) { totalLabors += labor.getSubTotal(); }
         amount = totalItems + totalLabors;
         return amount;
     }

@@ -1,5 +1,7 @@
 package br.com.autosoft.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.autosoft.entities.Product;
 import br.com.autosoft.entities.Provider;
 import lombok.AllArgsConstructor;
@@ -14,6 +16,8 @@ public class ProductDTO {
     private Integer id;
     private String name;
     private String factoryCode;
+
+    @JsonFormat
     private Provider provider;
     private String groupName;
     private Double price;
@@ -23,7 +27,6 @@ public class ProductDTO {
         this.id = product.getId();
         this.name = product.getName();
         this.factoryCode = product.getFactoryCode();
-        this.provider = product.getProvider();
         this.groupName = product.getGroupName();
         this.price = product.getPrice();
         this.brand = product.getBrand();

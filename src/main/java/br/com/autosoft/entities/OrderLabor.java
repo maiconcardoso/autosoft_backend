@@ -1,6 +1,8 @@
 package br.com.autosoft.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,25 +27,27 @@ public class OrderLabor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer quantity;
-    private Double price;
-
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "labor_id")
     private Labor labor;
+    
+    @Column(name = "sub_total")
+    private Double subTotal;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public double getTotalLabor() {
-        return quantity * price;
+    public double getSubTotal() {
+        return quantity * labor.getPrice();
     }
 
     public OrderLabor(Integer id, Integer quantity, Double price, Labor labor) {
         this.id = id;
         this.quantity = quantity;
-        this.price = price;
         this.labor = labor;
+        this.subTotal = getSubTotal();
     }
 }
