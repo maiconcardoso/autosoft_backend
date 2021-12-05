@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.autosoft.dtos.OrderDTO;
@@ -21,7 +22,7 @@ import br.com.autosoft.service.OrderService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
 public class OrderController {
 
     @Autowired
@@ -37,6 +38,12 @@ public class OrderController {
     public ResponseEntity<OrderDTO> findById(@PathVariable Integer id) {
         OrderDTO orderById = service.readById(id);
         return ResponseEntity.status(HttpStatus.OK).body(orderById);
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<List<OrderDTO>> findByCustomerName(@RequestParam String name) {
+        List<OrderDTO> orderByNameCustomer = service.readByNameCustomer(name);
+        return ResponseEntity.status(HttpStatus.OK).body(orderByNameCustomer);
     }
 
     @PostMapping

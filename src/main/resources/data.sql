@@ -12,7 +12,7 @@ INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VAL
 INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VALUES ('Vespor Automotive', '44 34252970', '01.826.338/0001-60', 'vespor_automotive@hotmail.com', 'Maringá', 'Av Colombo', '87085152');
 
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T14:18:23Z', 0, 1, 0.0);
-INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T13:25:12Z', 1, 2, 0.0);
+INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-11-23T13:25:12Z', 1, 1, 0.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-08-10T08:14:54Z', 3, 3, 0.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T15:33:59Z', 2, 4, 0.0);
 

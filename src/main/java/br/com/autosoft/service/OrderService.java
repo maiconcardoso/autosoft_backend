@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.autosoft.dtos.OrderDTO;
 import br.com.autosoft.entities.Order;
@@ -17,8 +18,9 @@ import br.com.autosoft.repositories.OrderRepository;
 public class OrderService {
 
     @Autowired
-    OrderRepository repository;
+    private OrderRepository repository;
 
+    @Transactional(readOnly = true)
     public List<OrderDTO> readAll() {
         List<Order> orderList = repository.findAll();
         return orderList.stream().map(obj -> new OrderDTO(obj)).collect(Collectors.toList());
@@ -28,6 +30,11 @@ public class OrderService {
         Optional<Order> orderById = repository.findById(id);
         return orderById.stream().map(obj -> new OrderDTO(obj)).findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
+    }
+
+    public List<OrderDTO> readByNameCustomer(String name) {
+        List<Order> orderByNameCustomer = repository.findByCustomerName(name);
+        return orderByNameCustomer.stream().map((obj) -> new OrderDTO(obj)).collect(Collectors.toList());
     }
 
     public Order save(Order order) {
