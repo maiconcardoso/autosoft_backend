@@ -45,7 +45,8 @@ public class ProductService {
             Product productToBeUpdate = productById.get();
             productToBeUpdate.setName(product.getName());
             productToBeUpdate.setProvider(product.getProvider());
-            productToBeUpdate.setGroupName(product.getGroupName());
+            productToBeUpdate.setGroupFamily(product.getGroupFamily());
+            productToBeUpdate.setSubGroup(product.getSubGroup());
             productToBeUpdate.setFactoryCode(product.getFactoryCode());
             productToBeUpdate.setBrand(product.getBrand());
             productToBeUpdate.setPrice(product.getPrice());

@@ -13,12 +13,14 @@ public class LaborDTO {
     private Integer id;
     private String description;
     private Double price;
-    private String groupName;
+    private String groupFamily;
+    private String subGroup;
 
     public LaborDTO(Labor labor) {
         this.id = labor.getId();
         this.description = labor.getDescription();
         this.price = labor.getPrice();
-        this.groupName = labor.getGroupName();
+        this.groupFamily = labor.getGroupFamily();
+        this.subGroup = labor.getSubGroup();
     }
 }

@@ -43,8 +43,7 @@ public class UserService {
 		Optional<User> userForUpdate = repository.findById(id);
 		if (userForUpdate.isPresent()) {
 			User user = userForUpdate.get();
-			user.setName(alterUser.getName());
-			user.setNick(alterUser.getNick());
+			user.setUsername(alterUser.getUsername());
 			user.setEmail(alterUser.getEmail());
 			repository.save(alterUser);
 		}

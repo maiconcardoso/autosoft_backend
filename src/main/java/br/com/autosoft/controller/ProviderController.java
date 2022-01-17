@@ -22,7 +22,7 @@ import br.com.autosoft.service.ProviderService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController 
-@RequestMapping("/provider")
+@RequestMapping("/providers")
 public class ProviderController {
 
     @Autowired

@@ -24,7 +24,7 @@ import br.com.autosoft.service.CustomerService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 public class CustomerController {
     
     @Autowired

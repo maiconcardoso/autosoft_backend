@@ -12,9 +12,7 @@ public class UserDTO implements Serializable{
 	@NotEmpty(message = "The id User cannot be Empty")
 	private Integer id;
 	@NotEmpty(message = "The Name User cannot be Empty")
-	private String name;
-	@NotEmpty(message = "The Nick Name User cannot be Empty")
-	private String nick;
+	private String username;
 	@NotEmpty(message = "The Emal User cannot be Empty")
 	private String email;
 	
@@ -22,8 +20,7 @@ public class UserDTO implements Serializable{
 
 	public UserDTO(User user) {
 		this.id = user.getId();
-		this.name = user.getName();
-		this.nick = user.getNick();
+		this.username = user.getUsername();
 		this.email = user.getEmail();
 	}
 
@@ -35,20 +32,12 @@ public class UserDTO implements Serializable{
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getNick() {
-		return nick;
-	}
-
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {

@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,11 +21,9 @@ public class User {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
-	@NotEmpty(message = "The Nick Name User cannot be Empty")
-	private String nick;
+	private String username;
 	private String email;
-	@NotNull
+	@NotEmpty(message = "The password cannot be empty")
 	private String password;
 	
 }

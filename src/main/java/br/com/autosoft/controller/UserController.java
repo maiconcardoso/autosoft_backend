@@ -23,7 +23,7 @@ import br.com.autosoft.service.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
 	@Autowired

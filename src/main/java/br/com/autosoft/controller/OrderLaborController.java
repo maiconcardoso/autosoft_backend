@@ -19,7 +19,7 @@ import br.com.autosoft.entities.OrderLabor;
 import br.com.autosoft.service.OrderLaborService;
 
 @RestController
-@RequestMapping("/order-labor")
+@RequestMapping("/order-labors")
 public class OrderLaborController {
     
     @Autowired

@@ -22,7 +22,7 @@ import br.com.autosoft.service.LaborService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/labor")
+@RequestMapping("/labors")
 public class LaborController {
     
     @Autowired

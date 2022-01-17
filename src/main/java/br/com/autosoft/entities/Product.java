@@ -39,8 +39,11 @@ public class Product {
     @JoinColumn(name = "provider_id")
     private Provider provider;
 
-    @Column(name = "group_name")
-    private String groupName;
+    @Column(name = "group_Family")
+    private String groupFamily;
+
+    @Column(name = "sub_group")
+    private String subGroup;
     private Double price;
     private String brand;
 }

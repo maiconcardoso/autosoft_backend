@@ -19,7 +19,7 @@ import br.com.autosoft.entities.OrderItem;
 import br.com.autosoft.service.OrderItemService;
 
 @RestController
-@RequestMapping("/order-item")
+@RequestMapping("/order-items")
 public class OrderItemController {
     
     @Autowired

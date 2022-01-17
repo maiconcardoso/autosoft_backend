@@ -45,7 +45,8 @@ public class LaborService {
             Labor labor = laborById.get();
             labor.setDescription(laborToBeUpdated.getDescription());
             labor.setPrice(laborToBeUpdated.getPrice());
-            labor.setGroupName(laborToBeUpdated.getGroupName());
+            labor.setGroupFamily(laborToBeUpdated.getGroupFamily());
+            labor.setSubGroup(laborToBeUpdated.getSubGroup());
             repository.save(labor);
         }
         return laborById.stream().map((obj) -> new LaborDTO(obj)).findFirst()

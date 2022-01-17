@@ -16,10 +16,9 @@ public class ProductDTO {
     private Integer id;
     private String name;
     private String factoryCode;
-
-    @JsonFormat
     private Provider provider;
-    private String groupName;
+    private String groupFamily;
+    private String subGroup;
     private Double price;
     private String brand;
 
@@ -27,7 +26,8 @@ public class ProductDTO {
         this.id = product.getId();
         this.name = product.getName();
         this.factoryCode = product.getFactoryCode();
-        this.groupName = product.getGroupName();
+        this.groupFamily = product.getGroupFamily();
+        this.subGroup = product.getSubGroup();
         this.price = product.getPrice();
         this.brand = product.getBrand();
     }

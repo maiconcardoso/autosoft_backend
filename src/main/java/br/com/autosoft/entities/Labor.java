@@ -28,7 +28,10 @@ public class Labor {
     private Integer id;
     private String description;
     private Double price;
+
+    @Column(name = "group_family")
+    private String groupFamily;
     
-    @Column(name= "group_name")
-    private String groupName;
+    @Column(name= "sub_group")
+    private String subGroup;
 }

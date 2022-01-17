@@ -24,7 +24,7 @@ public class LaborControllerTest {
     private ResponseEntity<Labor> laborSaved;
 
     public Labor createLabor() {
-        return Labor.builder().id(1).description("Descrição do Serviço").price(45.8).groupName("Grupo").build();
+        return Labor.builder().id(1).description("Descrição do Serviço").price(45.8).groupFamily("Grupo").subGroup("subGroup").build();
     }
 
     @BeforeEach
