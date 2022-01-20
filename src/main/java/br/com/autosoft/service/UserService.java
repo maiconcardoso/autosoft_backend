@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.autosoft.config.CreatePasswordEncoder;
 import br.com.autosoft.dtos.UserDTO;
 import br.com.autosoft.entities.User;
 import br.com.autosoft.exceptions.EntityNotFoundException;
@@ -20,10 +21,18 @@ public class UserService {
 	@Autowired
 	private UserRepository repository;
 
-	public User create(User userForCreate){
-		User newUser = repository.findByEmail(userForCreate.getEmail());
-		if (newUser == null) {
-			return repository.save(userForCreate);
+	@Autowired
+	private CreatePasswordEncoder passwordEncoder;
+
+	public User create(User userForCreated){
+		User emailUsers = repository.findByEmail(userForCreated.getEmail());
+		if (emailUsers == null) {
+			User newUser = new User();
+			newUser.setUsername(userForCreated.getUsername());
+			newUser.setEmail(userForCreated.getEmail());
+			newUser.setPassword(passwordEncoder.encode(userForCreated.getPassword()));
+			newUser.setAdmin(userForCreated.getAdmin());
+			return repository.save(userForCreated);
 		}
 		throw new RegisteredEntityException(RegisteredEntityException.MESSAGE);
 	}

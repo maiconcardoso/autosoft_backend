@@ -4,8 +4,18 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
 
-import br.com.autosoft.entities.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.autosoft.entities.User;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class UserDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -15,36 +25,13 @@ public class UserDTO implements Serializable{
 	private String username;
 	@NotEmpty(message = "The Emal User cannot be Empty")
 	private String email;
-	
-	public UserDTO() {}
+	@NotEmpty(message = "The access level must be filled")
+	private Boolean admin;
 
 	public UserDTO(User user) {
 		this.id = user.getId();
 		this.username = user.getUsername();
 		this.email = user.getEmail();
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+		this.admin = user.getAdmin();
 	}
 }

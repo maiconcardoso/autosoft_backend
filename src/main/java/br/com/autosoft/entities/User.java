@@ -1,5 +1,6 @@
 package br.com.autosoft.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +23,13 @@ public class User {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String username;
+
+	@Column(unique = true)
 	private String email;
+
 	@NotEmpty(message = "The password cannot be empty")
 	private String password;
-	
+
+	@NotEmpty(message = "The admin cannot be empty")
+	private Boolean admin;
 }

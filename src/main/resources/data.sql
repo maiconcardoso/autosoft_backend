@@ -1,7 +1,7 @@
-INSERT INTO tb_user(username, email, password) VALUES ('Maria', 'maria@gmail.com','1348.74');
-INSERT INTO tb_user(username, email, password) VALUES ('Joao Silva','joao@gmail.com','9276.62');
-INSERT INTO tb_user(username, email, password) VALUES ('Carlos Silva','carlos@gmail.com','7318.75');
-INSERT INTO tb_user(username, email, password) VALUES ('Adriana','adriana@gmail.com','10688.93');
+INSERT INTO tb_user(username, email, password, admin) VALUES ('maria', 'maria@gmail.com','$2a$10$v2bMTbQWuiHdUcjIM5qcku8.ISS066QVd5M1SBAWTp8mxISoDWS4q', true);
+INSERT INTO tb_user(username, email, password, admin) VALUES ('joao','joao@gmail.com','$2a$10$v2bMTbQWuiHdUcjIM5qcku8.ISS066QVd5M1SBAWTp8mxISoDWS4q', false);
+INSERT INTO tb_user(username, email, password, admin) VALUES ('carlos_silva','carlos@gmail.com','$2a$10$v2bMTbQWuiHdUcjIM5qcku8.ISS066QVd5M1SBAWTp8mxISoDWS4q', true);
+INSERT INTO tb_user(username, email, password, admin) VALUES ('adriana','adriana@gmail.com','$2a$10$v2bMTbQWuiHdUcjIM5qcku8.ISS066QVd5M1SBAWTp8mxISoDWS4q', false);
 
 INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Maicon Cardoso', '44991682996', '07545268980', 'maiconscardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
 INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Maria Cardoso', '44991156978', '08577693258', 'maris2cardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
