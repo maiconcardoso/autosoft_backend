@@ -32,7 +32,7 @@ public class UserService {
 			newUser.setEmail(userForCreated.getEmail());
 			newUser.setPassword(passwordEncoder.encode(userForCreated.getPassword()));
 			newUser.setAdmin(userForCreated.getAdmin());
-			return repository.save(userForCreated);
+			return repository.save(newUser);
 		}
 		throw new RegisteredEntityException(RegisteredEntityException.MESSAGE);
 	}

@@ -33,8 +33,8 @@ public class UserController {
 
 	@PostMapping("/auth/users")
 	public ResponseEntity<User> create(@RequestBody @Valid User user) {
-		userService.create(user);
-		return ResponseEntity.status(HttpStatus.OK).build();
+		User userCreate = userService.create(user);
+		return ResponseEntity.status(HttpStatus.OK).body(userCreate);
 	}
 
 	@GetMapping("/auth/users")

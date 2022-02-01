@@ -30,6 +30,5 @@ public class User {
 	@NotEmpty(message = "The password cannot be empty")
 	private String password;
 
-	@NotEmpty(message = "The admin cannot be empty")
 	private Boolean admin;
 }

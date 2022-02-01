@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.com.autosoft.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
