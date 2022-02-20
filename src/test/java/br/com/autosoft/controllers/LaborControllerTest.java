@@ -24,7 +24,8 @@ public class LaborControllerTest {
     private ResponseEntity<Labor> laborSaved;
 
     public Labor createLabor() {
-        return Labor.builder().id(1).description("Descrição do Serviço").price(45.8).groupFamily("Grupo").subGroup("subGroup").build();
+        return Labor.builder().id(1).description("Descrição do Serviço").price(45.8).groupFamily("Grupo")
+                .subGroup("subGroup").build();
     }
 
     @BeforeEach
@@ -42,7 +43,7 @@ public class LaborControllerTest {
     public void mustReturHttpOKStatusForLaborById() {
         Integer id = laborToBeSaved.getId();
         ResponseEntity<LaborDTO> laborById = controller.findById(id);
-        Assertions.assertEquals(laborById.getStatusCode(), HttpStatus.OK); 
+        Assertions.assertEquals(laborById.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
@@ -64,5 +65,5 @@ public class LaborControllerTest {
         ResponseEntity<List<LaborDTO>> laborList = controller.findAll();
         Assertions.assertEquals(laborList.getStatusCode(), HttpStatus.OK);
     }
-    
+
 }

@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @Table(name = "tb_order_labor")
-public class OrderLabor {
+public class OrderLabor{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
