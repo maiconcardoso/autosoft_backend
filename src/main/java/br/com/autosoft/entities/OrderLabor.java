@@ -25,23 +25,23 @@ public class OrderLabor{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Integer quantity;
+    protected Integer id;
+    protected Integer quantity;
     
+    @Column(name = "sub_total")
+    protected Double subTotal;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "labor_id")
     private Labor labor;
-    
-    @Column(name = "sub_total")
-    private Double subTotal;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Order order;
+    protected Order order;
 
     public double getSubTotal() {
-        return quantity * labor.getPrice();
+        return this.quantity * labor.getPrice();
     }
 
     public OrderLabor(Integer id, Integer quantity, Double price, Labor labor) {

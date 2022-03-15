@@ -33,6 +33,7 @@ public class Order implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "creation_date")
     private Calendar creationDate;
     private OrderStatus status;

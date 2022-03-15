@@ -46,6 +46,12 @@ public class CustomerService {
         return repository.save(customerToBeSaved);
     }
 
+    // public CustomerDTO save(Customer customerToBeSaved){
+    //     Customer customerSaved = repository.save(customerToBeSaved);
+    //     CustomerDTO newCustomer = new CustomerDTO(customerSaved);
+    //     return newCustomer
+    // }
+
     public CustomerDTO update(Customer customerToBeUpdated, Integer id) {
         Optional<Customer> customerById = repository.findById(id);
         if (customerById.isPresent()) {
