@@ -3,10 +3,10 @@ INSERT INTO tb_user(username, email, password, admin) VALUES ('joao','joao@gmail
 INSERT INTO tb_user(username, email, password, admin) VALUES ('carlos_silva','carlos@gmail.com','$2a$10$v2bMTbQWuiHdUcjIM5qcku8.ISS066QVd5M1SBAWTp8mxISoDWS4q', true);
 INSERT INTO tb_user(username, email, password, admin) VALUES ('adriana','adriana@gmail.com','$2a$10$v2bMTbQWuiHdUcjIM5qcku8.ISS066QVd5M1SBAWTp8mxISoDWS4q', false);
 
-INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Maicon Cardoso', '44991682996', '07545268980', 'maiconscardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
-INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Maria Cardoso', '44991156978', '08577693258', 'maris2cardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
-INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Heitor Cardoso', null, '44654654654', 'heitorcardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
-INSERT INTO tb_customer(name, fone, cpf, email, city, address, cep) VALUES ('Helena Cardoso', null, '65465465465', 'helenacardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Maicon Cardoso', '44991682996', '07545268980', 'maiconscardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Maria Cardoso', '44991156978', '08577693258', 'maris2cardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Heitor Cardoso', '44991156978', '44654654654', 'heitorcardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Helena Cardoso', '44991682996', '65465465465', 'helenacardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
 
 INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VALUES ('Rolles Distribuidora', '44 34252970', '01.826.338/0001-60', 'rolles@gmail.com', 'Maringá', 'Av Colombo', '87085152');
 INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VALUES ('Vespor Automotive', '44 34252970', '01.826.338/0001-60', 'vespor_automotive@hotmail.com', 'Maringá', 'Av Colombo', '87085152');
@@ -16,10 +16,10 @@ INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-1
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-08-10T08:14:54Z', 3, 3, 0.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T15:33:59Z', 2, 4, 0.0);
 
-INSERT INTO tb_product (name, provider_id, factory_code, group_family, sub_group, price, brand) VALUES ('Bronzina', 1, 4566998, 'Volksvagem', 'Motor AP', 25.60, 'MAHLE');
-INSERT INTO tb_product (name, provider_id, factory_code, group_family, sub_group, price, brand) VALUES ('Mancal', 2, 636995, 'Chevrolet', 'Motor GM', 25.60, 'MAHLE');
-INSERT INTO tb_product (name, provider_id, factory_code, group_family, sub_group, price, brand) VALUES ('Arruela de Encosto', 2, 122545, 'FORD', 'Motor Ford', 25.60, 'TAKAO');
-INSERT INTO tb_product (name, provider_id, factory_code, group_family, sub_group, price, brand) VALUES ('Bucha de Biela', 1, 998874, 'Honda' ,'Motor HONDA', 25.60, 'TAKAO');
+INSERT INTO tb_product (name, factory_code, group_family, sub_group, price, brand) VALUES ('Bronzina', 4566998, 'Volksvagem', 'Motor AP', 25.60, 'MAHLE');
+INSERT INTO tb_product (name, factory_code, group_family, sub_group, price, brand) VALUES ('Mancal', 636995, 'Chevrolet', 'Motor GM', 25.60, 'MAHLE');
+INSERT INTO tb_product (name, factory_code, group_family, sub_group, price, brand) VALUES ('Arruela de Encosto', 122545, 'FORD', 'Motor Ford', 25.60, 'TAKAO');
+INSERT INTO tb_product (name, factory_code, group_family, sub_group, price, brand) VALUES ('Bucha de Biela', 998874, 'Honda' ,'Motor HONDA', 25.60, 'TAKAO');
 
 INSERT INTO tb_labor (description, price, group_family, sub_group) VALUES ('Retifica de Biela', 25.5, 'Volksvagem', 'Motor AP');
 INSERT INTO tb_labor (description, price, group_family, sub_group) VALUES ('Retifica de Virabrequim', 120.0, 'Chevrolet', 'Motor GM');

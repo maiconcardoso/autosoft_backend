@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
+@Data
 @Entity
 @Table(name = "tb_product")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -34,10 +34,10 @@ public class Product {
     @Column(name = "factory_code")
     private String factoryCode;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "provider_id")
-    private Provider provider;
+    // @JsonIgnore
+    // @ManyToOne
+    // @JoinColumn(name = "provider_id")
+    // private Provider provider;
 
     @Column(name = "group_Family")
     private String groupFamily;

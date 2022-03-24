@@ -20,7 +20,7 @@ public class CustomerDTO {
 	private String name;
 	
 	@NotEmpty(message = "The Fone Customer cannot be empty")
-	private String fone;
+	private String phoneNumber;
 	private String cpf;
 	private String email;
 	private String city;
@@ -30,7 +30,7 @@ public class CustomerDTO {
 	public CustomerDTO(Customer customer) {
 		this.id = customer.getId();
 		this.name = customer.getName();
-		this.fone = customer.getFone();
+		this.phoneNumber = customer.getPhoneNumber();
 		this.cpf = customer.getCpf();
 		this.email = customer.getEmail();
 		this.city = customer.getCity();

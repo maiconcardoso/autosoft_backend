@@ -57,7 +57,7 @@ public class CustomerService {
         if (customerById.isPresent()) {
             Customer customer = customerById.get();
             customer.setName(customerToBeUpdated.getName());
-            customer.setFone(customerToBeUpdated.getFone());
+            customer.setPhoneNumber(customerToBeUpdated.getPhoneNumber());
             customer.setEmail(customerToBeUpdated.getEmail());
             customer.setCpf(customerToBeUpdated.getCpf());
             customer.setCity(customerToBeUpdated.getCity());

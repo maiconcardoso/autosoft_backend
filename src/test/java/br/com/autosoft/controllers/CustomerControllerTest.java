@@ -30,7 +30,7 @@ public class CustomerControllerTest {
     ResponseEntity<Customer> customerSave;
 
     public Customer createCustomer() {
-        return Customer.builder().id(1).name("Cliente").fone("991682996").email("cliente@email.com").cpf("870754885")
+        return Customer.builder().id(1).name("Cliente").phoneNumber("991682996").email("cliente@email.com").cpf("870754885")
                 .city("Cidade").cep("87075325").address("Rua do cliente").build();
     }
 

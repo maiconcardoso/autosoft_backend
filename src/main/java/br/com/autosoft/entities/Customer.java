@@ -1,5 +1,6 @@
 package br.com.autosoft.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,9 @@ public class Customer{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	private String fone;
+	
+	@Column(name ="phone_number")
+	private String phoneNumber;
 	private String cpf;
 	private String email;
 	private String city;

@@ -16,7 +16,7 @@ public class ProductDTO {
     private Integer id;
     private String name;
     private String factoryCode;
-    private Provider provider;
+    //private Provider provider;
     private String groupFamily;
     private String subGroup;
     private Double price;
@@ -26,6 +26,7 @@ public class ProductDTO {
         this.id = product.getId();
         this.name = product.getName();
         this.factoryCode = product.getFactoryCode();
+        //this.provider = product.getProvider();
         this.groupFamily = product.getGroupFamily();
         this.subGroup = product.getSubGroup();
         this.price = product.getPrice();

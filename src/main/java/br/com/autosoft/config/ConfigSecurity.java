@@ -10,12 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.autosoft.service.UserDetailService;
-import lombok.extern.log4j.Log4j2;
+
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true )
-@Log4j2
 public class ConfigSecurity extends WebSecurityConfigurerAdapter{
 
     @Autowired

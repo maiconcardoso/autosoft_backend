@@ -17,7 +17,7 @@ import br.com.autosoft.entities.Provider;
 
 @SpringBootTest
 public class ProductControllerTest {
-    
+
     @Autowired
     private ProductController controller;
 
@@ -26,15 +26,14 @@ public class ProductControllerTest {
 
     private Product createProduct() {
         return Product.builder().id(1).name("Produto criado").factoryCode("BG0654").brand("Mahle")
-        .provider(new Provider(1, "Rolles Distribuidora", "44 34252970", "01.826.338/0001-60",
-                "rolles@gmail.com", "Maringá", "Av Colombo", "87085152")).groupFamily("groupFamily")
-        .subGroup("Motor AP").price(254.4).build();
+                .groupFamily("groupFamily")
+                .subGroup("Motor AP").price(254.4).build();
     }
 
     @BeforeEach
     public void setup() {
         productToBeSaved = createProduct();
-        productSaved = controller.save(productToBeSaved); 
+        productSaved = controller.save(productToBeSaved);
     }
 
     @Test
@@ -67,6 +66,6 @@ public class ProductControllerTest {
         Integer id = productToBeSaved.getId();
         productToBeSaved.setName("Novo produto");
         ResponseEntity<ProductDTO> productUpdate = controller.update(id, productToBeSaved);
-        Assertions.assertEquals(productUpdate.getStatusCode(), HttpStatus.OK );
+        Assertions.assertEquals(productUpdate.getStatusCode(), HttpStatus.OK);
     }
 }
