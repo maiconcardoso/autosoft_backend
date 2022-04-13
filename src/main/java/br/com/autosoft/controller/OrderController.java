@@ -23,7 +23,7 @@ import br.com.autosoft.service.OrderService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("v1/auth/orders")
 public class OrderController {
 
     @Autowired
@@ -48,12 +48,13 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> save(@RequestBody Order order) {
-        Order newOrder = service.save(order);
+    public ResponseEntity<OrderDTO> save(@RequestBody Order order) {
+        OrderDTO newOrder = service.save(order);
         return ResponseEntity.status(HttpStatus.OK).body(newOrder);
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OrderDTO> update(@RequestBody Order order, @PathVariable Integer id) {
         OrderDTO orderForUpdate = service.update(order, id);
         return ResponseEntity.status(HttpStatus.OK).body(orderForUpdate);

@@ -7,6 +7,25 @@ INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALU
 INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Maria Cardoso', '44991156978', '08577693258', 'maris2cardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
 INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Heitor Cardoso', '44991156978', '44654654654', 'heitorcardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
 INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Helena Cardoso', '44991682996', '65465465465', 'helenacardoso@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Geraldo Silva', '44991682996', '07545268980', 'geraldosilva@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Adressa Silva', '44991156978', '08577693258', 'andressasilva@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Vanessa Silva', '44991156978', '44654654654', 'vanessasilva@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('carlos silva', '44991682996', '65465465465', 'carlossilva@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('André Viera', '44991682996', '07545268980', 'Andrevieira@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Karla Vieira', '44991156978', '08577693258', 'karlavieira@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('josé Vieira', '44991156978', '44654654654', 'josevieira@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Emanuel Vieira', '44991682996', '65465465465', 'emanuelvieira@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Roque Santeiro', '44991682996', '07545268980', 'roquesanteiro@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Patricia Santeiro', '44991156978', '08577693258', 'patriciasanteiro@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Juviliana Santeiro', '44991156978', '44654654654', 'juvilianasanteiro@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Clarisse Santeiro', '44991682996', '65465465465', 'clarissesanteiro@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Karla Vieira', '44991156978', '08577693258', 'karlavieira@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Manu Vieira', '44991156978', '44654654654', 'josevieira@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Carlos Vieira', '44991682996', '65465465465', 'emanuelvieira@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Henrique Santeiro', '44991682996', '07545268980', 'henrique@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Beatriz Santeiro', '44991156978', '08577693258', 'beatriz@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Ines Santeiro', '44991156978', '44654654654', 'ines@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
+INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALUES ('Odete Roitman', '44991682996', '65465465465', 'odete@hotmail.com', 'Paranavaí', 'Rua João Capixaba', '87706443');
 
 INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VALUES ('Rolles Distribuidora', '44 34252970', '01.826.338/0001-60', 'rolles@gmail.com', 'Maringá', 'Av Colombo', '87085152');
 INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VALUES ('Vespor Automotive', '44 34252970', '01.826.338/0001-60', 'vespor_automotive@hotmail.com', 'Maringá', 'Av Colombo', '87085152');

@@ -23,7 +23,7 @@ import br.com.autosoft.service.LaborService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/labors")
+@RequestMapping("v1/auth/labors")
 public class LaborController {
     
     @Autowired
@@ -54,6 +54,7 @@ public class LaborController {
     }
     
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<LaborDTO> update(@PathVariable Integer id, @RequestBody Labor laborToBeUpdated) {
         LaborDTO laborUpdated = service.update(id, laborToBeUpdated);
         return ResponseEntity.status(HttpStatus.OK).body(laborUpdated);

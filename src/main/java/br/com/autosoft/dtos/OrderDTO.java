@@ -20,7 +20,6 @@ import lombok.NoArgsConstructor;
 public class OrderDTO {
 
     private Integer id;
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Calendar creationDate;
     private OrderStatus status;
     private Customer customer;  

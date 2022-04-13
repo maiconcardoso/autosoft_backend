@@ -8,15 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.OrderLaborDTO;
+import br.com.autosoft.entities.Order;
 import br.com.autosoft.entities.OrderLabor;
 import br.com.autosoft.exceptions.EntityNotFoundException;
 import br.com.autosoft.repositories.OrderLaborRepository;
+import br.com.autosoft.repositories.OrderRepository;
 
 @Service
 public class OrderLaborService {
 
     @Autowired
     private OrderLaborRepository repository;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     public List<OrderLaborDTO> readAll() {
         List<OrderLabor> orderLaborList = repository.findAll();
@@ -29,7 +34,9 @@ public class OrderLaborService {
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
     }
 
-    public OrderLaborDTO create(OrderLabor orderLabor) {
+    public OrderLaborDTO create(OrderLabor orderLabor, Integer id_order) {
+        Order newOrder = orderRepository.findById(id_order).get();
+        orderLabor.setOrder(newOrder);
         OrderLabor orderLaborToBeSaved = repository.save(orderLabor);
         OrderLaborDTO orderLaborSaved = new OrderLaborDTO(orderLaborToBeSaved);
         return orderLaborSaved;

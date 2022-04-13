@@ -1,5 +1,6 @@
 package br.com.autosoft.dtos;
 
+
 import br.com.autosoft.entities.Labor;
 import br.com.autosoft.entities.OrderLabor;
 import lombok.AllArgsConstructor;

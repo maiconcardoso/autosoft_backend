@@ -23,7 +23,7 @@ import br.com.autosoft.service.ProductService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/products")
+@RequestMapping("v1/auth/products")
 public class ProductController {
 
     @Autowired
@@ -54,6 +54,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ProductDTO> update(@PathVariable Integer id, @RequestBody Product product) {
         ProductDTO productToBeUpdate = service.update(id, product);
         return ResponseEntity.status(HttpStatus.OK).body(productToBeUpdate);

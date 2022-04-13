@@ -13,14 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import br.com.autosoft.dtos.OrderLaborDTO;
 import br.com.autosoft.entities.OrderLabor;
 import br.com.autosoft.service.OrderLaborService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/order-labors")
+@RequestMapping("v1/auth/order-labors")
 public class OrderLaborController {
     
     @Autowired
@@ -39,12 +42,14 @@ public class OrderLaborController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderLaborDTO> save(@RequestBody OrderLabor orderLabor) {
-        OrderLaborDTO orderLaborToBeSaved = service.create(orderLabor);
+    public ResponseEntity<OrderLaborDTO> save(@RequestBody OrderLabor orderLabor, 
+    @RequestParam(value = "order", defaultValue = "0") Integer id_order) {
+        OrderLaborDTO orderLaborToBeSaved = service.create(orderLabor, id_order);
         return ResponseEntity.status(HttpStatus.OK).body(orderLaborToBeSaved);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OrderLaborDTO> update(@PathVariable Integer id, @RequestBody OrderLabor orderLabor) {
         OrderLaborDTO orderLaborToBeUpdated = service.update(id, orderLabor);
         return ResponseEntity.status(HttpStatus.OK).body(orderLaborToBeUpdated);

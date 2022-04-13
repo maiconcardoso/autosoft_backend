@@ -37,8 +37,10 @@ public class OrderService {
         return orderByNameCustomer.stream().map((obj) -> new OrderDTO(obj)).collect(Collectors.toList());
     }
 
-    public Order save(Order order) {
-        return repository.save(order);
+    public OrderDTO save(Order order) {
+        Order orderToBySaved = repository.save(order);
+        OrderDTO newOrder = new OrderDTO(orderToBySaved);
+        return newOrder;
     }
 
     public OrderDTO update(Order order, Integer id) {

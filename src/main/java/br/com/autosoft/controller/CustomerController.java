@@ -25,7 +25,7 @@ import br.com.autosoft.service.CustomerService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("v1/auth/customers")
 public class CustomerController {
     
     @Autowired
@@ -37,7 +37,7 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.OK).body(registeredCustomer);
     }
 
-    @GetMapping("/page")
+    @GetMapping("/pageable")
     public ResponseEntity<Page<Customer>> findPageable(Pageable page) {
         Page<Customer> customerPage = service.readPageable(page);
         return ResponseEntity.status(HttpStatus.OK).body(customerPage);
@@ -64,6 +64,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CustomerDTO> update(@RequestBody Customer customerToBeUpdated, @PathVariable Integer id) {
         CustomerDTO customerUpdate = service.update(customerToBeUpdated, id);
         return ResponseEntity.status(HttpStatus.OK).body(customerUpdate);

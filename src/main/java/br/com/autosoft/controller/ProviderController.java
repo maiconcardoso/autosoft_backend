@@ -23,7 +23,7 @@ import br.com.autosoft.service.ProviderService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController 
-@RequestMapping("/providers")
+@RequestMapping("/v1/auth/providers")
 public class ProviderController {
 
     @Autowired
@@ -48,6 +48,7 @@ public class ProviderController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ProviderDTO> update(@PathVariable Integer id, @RequestBody Provider provider) {
         ProviderDTO providerForUpdate = service.update(id, provider);
         return ResponseEntity.status(HttpStatus.OK).body(providerForUpdate);
