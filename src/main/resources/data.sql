@@ -30,10 +30,15 @@ INSERT INTO tb_customer(name, phone_number, cpf, email, city, address, cep) VALU
 INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VALUES ('Rolles Distribuidora', '44 34252970', '01.826.338/0001-60', 'rolles@gmail.com', 'Maringá', 'Av Colombo', '87085152');
 INSERT INTO tb_provider(name, phone_number, cnpj, email, city, address, cep) VALUES ('Vespor Automotive', '44 34252970', '01.826.338/0001-60', 'vespor_automotive@hotmail.com', 'Maringá', 'Av Colombo', '87085152');
 
-INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T14:18:23Z', 0, 1, 0.0);
+INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2022-03-21T14:18:23Z', 0, 1, 0.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-11-23T13:25:12Z', 1, 1, 0.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-08-10T08:14:54Z', 3, 3, 0.0);
 INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23T15:33:59Z', 2, 4, 0.0);
+
+-- INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-10-23', 0, 1, 0.0);
+-- INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2020-11-23', 1, 1, 0.0);
+-- INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2022-01-02', 3, 3, 0.0);
+-- INSERT INTO tb_order(creation_date, status, id_customer, amount) VALUES ('2022-04-22', 2, 4, 0.0);
 
 INSERT INTO tb_product (name, factory_code, group_family, sub_group, price, brand) VALUES ('Bronzina', 4566998, 'Volksvagem', 'Motor AP', 25.60, 'MAHLE');
 INSERT INTO tb_product (name, factory_code, group_family, sub_group, price, brand) VALUES ('Mancal', 636995, 'Chevrolet', 'Motor GM', 25.60, 'MAHLE');

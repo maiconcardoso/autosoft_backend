@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ import br.com.autosoft.service.ProductService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("v1/auth/products")
+@RequestMapping("v1/products")
 public class ProductController {
 
     @Autowired
@@ -54,14 +53,12 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ProductDTO> update(@PathVariable Integer id, @RequestBody Product product) {
         ProductDTO productToBeUpdate = service.update(id, product);
         return ResponseEntity.status(HttpStatus.OK).body(productToBeUpdate);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();

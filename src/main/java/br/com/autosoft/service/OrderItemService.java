@@ -35,6 +35,11 @@ public class OrderItemService {
                 .orElseThrow(() -> new NoSuchElementException(NoSuchElementException.MESSAGE));
     }
 
+    public List<OrderItemDTO> readByIdProduct(Integer id_product) {
+        List<OrderItem> orderItemByIdProduct = repository.findByIdProduct(id_product);
+        return orderItemByIdProduct.stream().map(obj -> new OrderItemDTO(obj)).collect(Collectors.toList());
+    }
+
     public OrderItemDTO create(OrderItem orderItem, Integer id_order) {
         Order order = orderRepository.findById(id_order).get();
         orderItem.setOrder(order);

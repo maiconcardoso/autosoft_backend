@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +22,7 @@ import br.com.autosoft.service.LaborService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("v1/auth/labors")
+@RequestMapping("v1/labors")
 public class LaborController {
     
     @Autowired
@@ -54,14 +53,12 @@ public class LaborController {
     }
     
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<LaborDTO> update(@PathVariable Integer id, @RequestBody Labor laborToBeUpdated) {
         LaborDTO laborUpdated = service.update(id, laborToBeUpdated);
         return ResponseEntity.status(HttpStatus.OK).body(laborUpdated);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();

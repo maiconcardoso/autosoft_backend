@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import br.com.autosoft.dtos.ProductDTO;
 import br.com.autosoft.entities.Product;
-import br.com.autosoft.entities.Provider;
 import br.com.autosoft.service.ProductService;
 
 @SpringBootTest
@@ -25,7 +24,7 @@ public class ProductServiceTest {
     private Product createProduct() {
         return Product.builder().id(1).name("Produto criado").factoryCode("BG0654").brand("Mahle")
                 .groupFamily("groupFamily")
-                .subGroup("Motor AP").price(254.4).build();
+                .subGroup("Motor AP").application("gasolina").price(254.4).build();
     }
 
     @BeforeEach

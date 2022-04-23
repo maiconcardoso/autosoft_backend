@@ -27,11 +27,12 @@ public class Labor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String description;
-    private Double price;
-
+    
     @Column(name = "group_family")
     private String groupFamily;
     
     @Column(name= "sub_group")
     private String subGroup;
+    private String application;
+    private Double price;
 }

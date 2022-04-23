@@ -39,15 +39,16 @@ public class LaborService {
         return laborByDescription.stream().map((obj) -> new LaborDTO(obj)).collect(Collectors.toList());
     }
 
-    public LaborDTO update(Integer id, Labor laborToBeUpdated) {
+    public LaborDTO update(Integer id, Labor labor) {
         Optional<Labor> laborById = repository.findById(id);
         if (laborById.isPresent()) {
-            Labor labor = laborById.get();
-            labor.setDescription(laborToBeUpdated.getDescription());
-            labor.setPrice(laborToBeUpdated.getPrice());
-            labor.setGroupFamily(laborToBeUpdated.getGroupFamily());
-            labor.setSubGroup(laborToBeUpdated.getSubGroup());
-            repository.save(labor);
+            Labor laborToBeUpdated = laborById.get();
+            laborToBeUpdated.setDescription(labor.getDescription());
+            laborToBeUpdated.setGroupFamily(labor.getGroupFamily());
+            laborToBeUpdated.setSubGroup(labor.getSubGroup());
+            laborToBeUpdated.setApplication(labor.getApplication());
+            laborToBeUpdated.setPrice(labor.getPrice());
+            repository.save(laborToBeUpdated);
         }
         return laborById.stream().map((obj) -> new LaborDTO(obj)).findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));

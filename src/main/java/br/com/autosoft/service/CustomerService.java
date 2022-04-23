@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.autosoft.dtos.CustomerDTO;
+import br.com.autosoft.dtos.OrderDTO;
 import br.com.autosoft.entities.Customer;
 import br.com.autosoft.exceptions.EntityNotFoundException;
 import br.com.autosoft.exceptions.NoSuchElementException;
@@ -20,6 +21,9 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepository repository;
+
+    @Autowired
+    private OrderService orderService;
 
     public Page<Customer> readPageable(Pageable pageable) {
         return repository.findAll(pageable);
@@ -70,7 +74,9 @@ public class CustomerService {
     }
 
     public void delete(Integer id) {
-        repository.deleteById(id);
+        Optional<OrderDTO> idCustomer = orderService.readByIdCustomer(id);
+        if (idCustomer.isEmpty()) {
+            repository.deleteById(id);
+        }
     }
-
 }

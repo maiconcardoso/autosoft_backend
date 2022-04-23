@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +22,7 @@ import br.com.autosoft.service.OrderLaborService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("v1/auth/order-labors")
+@RequestMapping("v1/order-labors")
 public class OrderLaborController {
     
     @Autowired
@@ -41,6 +40,12 @@ public class OrderLaborController {
         return ResponseEntity.status(HttpStatus.OK).body(orderLaborById);
     }
 
+    @GetMapping("/labor")
+    public ResponseEntity<List<OrderLaborDTO>> findByIdLabor(@RequestParam Integer id) {
+        List<OrderLaborDTO> orderLaborsByIdLabor = service.readByIdLabor(id);
+        return ResponseEntity.status(HttpStatus.OK).body(orderLaborsByIdLabor);
+    }
+
     @PostMapping
     public ResponseEntity<OrderLaborDTO> save(@RequestBody OrderLabor orderLabor, 
     @RequestParam(value = "order", defaultValue = "0") Integer id_order) {
@@ -49,14 +54,12 @@ public class OrderLaborController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OrderLaborDTO> update(@PathVariable Integer id, @RequestBody OrderLabor orderLabor) {
         OrderLaborDTO orderLaborToBeUpdated = service.update(id, orderLabor);
         return ResponseEntity.status(HttpStatus.OK).body(orderLaborToBeUpdated);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();

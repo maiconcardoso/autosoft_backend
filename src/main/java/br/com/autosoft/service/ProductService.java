@@ -45,11 +45,12 @@ public class ProductService {
             Product productToBeUpdate = productById.get();
             productToBeUpdate.setName(product.getName());
             //productToBeUpdate.setProvider(product.getProvider());
+            productToBeUpdate.setFactoryCode(product.getFactoryCode());
             productToBeUpdate.setGroupFamily(product.getGroupFamily());
             productToBeUpdate.setSubGroup(product.getSubGroup());
-            productToBeUpdate.setFactoryCode(product.getFactoryCode());
-            productToBeUpdate.setBrand(product.getBrand());
+            productToBeUpdate.setApplication(product.getApplication());
             productToBeUpdate.setPrice(product.getPrice());
+            productToBeUpdate.setBrand(product.getBrand());
             repository.save(productToBeUpdate);
         }
         return productById.stream().map(obj -> new ProductDTO(obj)).findFirst()

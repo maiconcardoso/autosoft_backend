@@ -2,12 +2,9 @@ package br.com.autosoft.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +22,7 @@ import br.com.autosoft.service.OrderItemService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("v1/auth/order-items")
+@RequestMapping("v1/order-items")
 public class OrderItemController {
 
     @Autowired
@@ -43,6 +40,12 @@ public class OrderItemController {
         return ResponseEntity.status(HttpStatus.OK).body(orders);
     }
 
+    @GetMapping("/product")
+    public ResponseEntity<List<OrderItemDTO>> findByIdProduct(@RequestParam Integer id) {
+        List<OrderItemDTO> orderItemByIdProduct = service.readByIdProduct(id);
+        return ResponseEntity.status(HttpStatus.OK).body(orderItemByIdProduct);
+    }   
+
     @PostMapping
     public ResponseEntity<OrderItemDTO> save(@RequestBody OrderItem orderItem,
             @RequestParam(value = "order", defaultValue = "0") Integer id_order) {
@@ -51,14 +54,12 @@ public class OrderItemController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OrderItemDTO> update(@PathVariable Integer id, @RequestBody OrderItem orderItem) {
         OrderItemDTO orderItemUpdated = service.update(id, orderItem);
         return ResponseEntity.status(HttpStatus.OK).body(orderItemUpdated);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();

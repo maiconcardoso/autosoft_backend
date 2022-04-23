@@ -37,6 +37,11 @@ public class OrderService {
         return orderByNameCustomer.stream().map((obj) -> new OrderDTO(obj)).collect(Collectors.toList());
     }
 
+    public Optional<OrderDTO> readByIdCustomer(Integer id) {
+        Optional<Order> orderByIdCustomer = repository.findByCustomerId(id);
+        return orderByIdCustomer.stream().map(obj -> new OrderDTO(obj)).findFirst();
+    }
+
     public OrderDTO save(Order order) {
         Order orderToBySaved = repository.save(order);
         OrderDTO newOrder = new OrderDTO(orderToBySaved);

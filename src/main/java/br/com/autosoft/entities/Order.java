@@ -1,7 +1,10 @@
 package br.com.autosoft.entities;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,6 +19,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.springframework.data.annotation.CreatedDate;
 
 import br.com.autosoft.enuns.OrderStatus;
 import lombok.AllArgsConstructor;
@@ -35,7 +40,7 @@ public class Order implements Serializable{
     private Integer id;
 
     @Column(name = "creation_date")
-    private Calendar creationDate;
+    private LocalDateTime creationDate;
     private OrderStatus status;
 
     @OneToOne
@@ -58,5 +63,16 @@ public class Order implements Serializable{
         for (OrderLabor labor : labors ) { totalLabors += labor.getSubTotal(); }
         amount = totalItems + totalLabors;
         return amount;
+    }
+
+    public OrderStatus getStatus() {
+        LocalDateTime today = LocalDateTime.now();
+        Duration duration = Duration.between(creationDate, today);
+        long days = duration.toDays();
+        if (this.status == OrderStatus.WAITING && days > 30) {
+            return OrderStatus.LATE;
+        } else {
+            return this.status;
+        }
     }
 }

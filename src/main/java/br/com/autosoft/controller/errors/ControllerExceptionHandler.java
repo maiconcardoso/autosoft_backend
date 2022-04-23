@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import br.com.autosoft.exceptions.EntityNotFoundException;
 import br.com.autosoft.exceptions.NoSuchElementException;
 import br.com.autosoft.exceptions.RegisteredEntityException;
+import br.com.autosoft.exceptions.DataIntegrityViolationException;
 
 @ControllerAdvice
 public class ControllerExceptionHandler {
@@ -47,5 +48,16 @@ public class ControllerExceptionHandler {
         err.setMessage(registeredEntity.getMessage());
         err.setPath(request.getRequestURI());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(err);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> dataIntegrityViolation(DataIntegrityViolationException dataIntegrityViolation, HttpServletRequest request) {
+        StandardError err = new StandardError();
+        err.setTimestamp(Instant.now());
+        err.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        err.setError("Entity Conflict");
+        err.setMessage(dataIntegrityViolation.getMessage());
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err);
     }
 }

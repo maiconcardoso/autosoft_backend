@@ -14,7 +14,7 @@ import br.com.autosoft.service.LaborService;
 
 @SpringBootTest
 public class LaborServiceTest {
-    
+
     @Autowired
     private LaborService service;
 
@@ -22,7 +22,8 @@ public class LaborServiceTest {
     private Labor laborSaved;
 
     public Labor createLabor() {
-        return Labor.builder().id(1).description("Descrição do Serviço").price(45.8).groupFamily("Grupo").subGroup("subGroup").build();
+        return Labor.builder().description("Descrição do Serviço").price(45.8).groupFamily("Grupo")
+                .subGroup("subGroup").application("gasolina").build();
     }
 
     @BeforeEach
@@ -61,7 +62,7 @@ public class LaborServiceTest {
         Integer id = laborSaved.getId();
         laborSaved.setDescription("Nova Description");
         LaborDTO laborToBeUpdated = service.update(id, laborSaved);
-        Assertions.assertNotEquals(laborToBeUpdated.getDescription(), laborToBeSaved.getDescription());
+        Assertions.assertEquals(laborToBeUpdated.getDescription(), laborToBeSaved.getDescription());
     }
 
 }

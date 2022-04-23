@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,7 @@ import br.com.autosoft.service.CustomerService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("v1/auth/customers")
+@RequestMapping("v1/customers")
 public class CustomerController {
     
     @Autowired
@@ -64,14 +63,12 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CustomerDTO> update(@RequestBody Customer customerToBeUpdated, @PathVariable Integer id) {
         CustomerDTO customerUpdate = service.update(customerToBeUpdated, id);
         return ResponseEntity.status(HttpStatus.OK).body(customerUpdate);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return new ResponseEntity<Void>(HttpStatus.OK);

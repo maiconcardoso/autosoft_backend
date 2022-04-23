@@ -1,5 +1,6 @@
 package br.com.autosoft.service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -32,6 +33,11 @@ public class OrderLaborService {
         Optional<OrderLabor> orderLaborById = repository.findById(id);
         return orderLaborById.stream().map((obj) -> new OrderLaborDTO(obj)).findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(EntityNotFoundException.MESSAGE));
+    }
+
+    public List<OrderLaborDTO> readByIdLabor(Integer id_labor) {
+        List<OrderLabor> orderLaborsByIdLabor = repository.findByIdLabor(id_labor);
+        return orderLaborsByIdLabor.stream().map(obj -> new OrderLaborDTO(obj)).collect(Collectors.toList());
     }
 
     public OrderLaborDTO create(OrderLabor orderLabor, Integer id_order) {
