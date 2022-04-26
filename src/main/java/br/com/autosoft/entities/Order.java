@@ -69,8 +69,8 @@ public class Order implements Serializable{
         LocalDateTime today = LocalDateTime.now();
         Duration duration = Duration.between(creationDate, today);
         long days = duration.toDays();
-        if (this.status == OrderStatus.WAITING && days > 30) {
-            return OrderStatus.LATE;
+        if (this.status == OrderStatus.AGUARDANDO && days > 30) {
+            return OrderStatus.ATRASADA;
         } else {
             return this.status;
         }
