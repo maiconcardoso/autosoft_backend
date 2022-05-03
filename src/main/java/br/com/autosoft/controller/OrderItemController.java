@@ -21,7 +21,7 @@ import br.com.autosoft.entities.OrderItem;
 import br.com.autosoft.service.OrderItemService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://autosoft-system.firebaseapp.com")
 @RequestMapping("v1/order-items")
 public class OrderItemController {
 

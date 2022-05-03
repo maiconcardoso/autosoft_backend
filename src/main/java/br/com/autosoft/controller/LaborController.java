@@ -20,7 +20,7 @@ import br.com.autosoft.dtos.LaborDTO;
 import br.com.autosoft.entities.Labor;
 import br.com.autosoft.service.LaborService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://autosoft-system.firebaseapp.com")
 @RestController
 @RequestMapping("v1/labors")
 public class LaborController {
